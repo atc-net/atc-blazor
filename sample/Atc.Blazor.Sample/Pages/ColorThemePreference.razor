@@ -1,0 +1,35 @@
+@page "/color-theme-preference"
+
+@using Atc.Blazor.ColorThemePreference
+
+@inject IColorThemePreferenceDetector colorThemePreferenceDetector;
+
+<PageTitle>ColorThemePreference</PageTitle>
+
+<h1>Atc.Blazor.ColorThemePreference</h1>
+
+<p>A library for detecting the user preferred color theme</p>
+<p>Read more about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/%40media/prefers-color-scheme" target="_blank">prefers-color-scheme</a></p>
+
+<br />
+
+<h2>Results from methods:</h2>
+
+<br />
+
+<p>UseLightMode: @useLightMode</p>
+<p>UseDarkMode: @useDarkMode</p>
+
+@code
+{
+    private bool useLightMode;
+    private bool useDarkMode;
+
+    protected override async Task OnInitializedAsync()
+    {
+        useLightMode = await colorThemePreferenceDetector.UseLightMode();
+        useDarkMode = await colorThemePreferenceDetector.UseDarkMode();
+
+        await base.OnInitializedAsync();
+    }
+}
