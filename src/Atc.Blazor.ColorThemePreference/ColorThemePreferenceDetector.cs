@@ -12,7 +12,7 @@ namespace Atc.Blazor.ColorThemePreference
             moduleTask = new Lazy<Task<IJSObjectReference>>(() => jsRuntime
                 .InvokeAsync<IJSObjectReference>(
                     "import",
-                    "./_content/Atc.Blazor.ColorThemePreference/scripts/ColorThemePreferenceDetector.js")
+                    "./_content/Atc.Blazor.ColorThemePreference/ColorThemePreferenceDetector.js")
                 .AsTask());
         }
 

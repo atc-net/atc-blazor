@@ -8,6 +8,8 @@ This repository contains packages with components for Blazor application:
 |---|---|
 | Atc.Blazor.ColorThemePreference | A library for detecting the user preferred color theme |
 
+## Get started Atc.Blazor.ColorThemePreference
+
 ### Requirements
 
 * [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
@@ -21,6 +23,7 @@ Install-Package Atc.Blazor.ColorThemePreference
 ### How to Setup
 
 Modify `Program.cs` by adding to the service builder:
+
 ```csharp
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -34,8 +37,9 @@ await builder.Build().RunAsync();
 ```
 
 Modify `index.html` by adding:
+
 ```html
-<script src="_content/Atc.Blazor.ColorThemePreference/ColorThemePreferenceDetector.js"></script>
+<script src="_content/Atc.Blazor.ColorThemePreference/ColorThemePreferenceDetector.js" type="module"></script>
 ```
 
 ### How to Use
