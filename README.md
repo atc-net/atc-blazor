@@ -8,13 +8,90 @@ This repository contains packages with components for Blazor application:
 |---|---|
 | Atc.Blazor.ColorThemePreference | A library for detecting the user preferred color theme |
 
-## Get started Atc.Blazor.ColorThemePreference
-
-### Requirements
+## Requirements
 
 * [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-### Installation
+## Get started Atc.Blazor
+
+### Installation for Atc.Blazor
+
+```powershell
+Install-Package Atc.Blazor
+```
+
+### How to Use `NavigationManager.TryGetQueryString`
+
+```csharp
+int myInt = 0;
+
+NavigationManager.TryGetQueryString<int>("myKey", out var myInt)
+```
+
+### How to Use `QueryStringParameterAttribute` and `SetPropertiesWithDecoratedQueryStringParameterFromQueryString`
+
+```csharp
+@page "/"
+@inject NavigationManager NavigationManager
+
+<div>My age is: @Age</div>
+
+@code
+{
+    [QueryStringParameter]
+    public int Age { get; set; }
+
+    public override Task SetParametersAsync(ParameterView parameters) // Overload from Blazor components lifecycle
+    {
+        this.SetPropertiesWithDecoratedQueryStringParameterFromQueryString(NavigationManager); // Bind from url-qyery-parameter 'age' to property 'Age'
+        return base.SetParametersAsync(parameters);
+    }
+}
+```
+
+```csharp
+@page "/"
+@inject NavigationManager NavigationManager
+
+<div>My age is: @Age</div>
+
+@code
+{
+    [QueryStringParameter("myAge")]
+    public int Age { get; set; }
+
+    public override Task SetParametersAsync(ParameterView parameters) // Overload from Blazor components lifecycle
+    {
+        this.SetPropertiesWithDecoratedQueryStringParameterFromQueryString(NavigationManager); // Bind from url-qyery-parameter 'myAge' to property 'Age'
+        return base.SetParametersAsync(parameters);
+    }
+}
+```
+
+### How to Use `QueryStringParameterAttribute` and `UpdateQueryStringFromPropertiesWithDecoratedQueryStringParameter`
+
+```csharp
+@page "/"
+@inject NavigationManager NavigationManager
+
+<button type="button" @onclick="UpdateQueryStringWithAge(21)">Update url</button>
+
+@code
+{
+    [QueryStringParameter]
+    public int Age { get; set; }
+
+    public void UpdateQueryStringWithAge(int age)
+    {
+        this.Age = age;
+        this.UpdateQueryString(NavigationManager);
+    }
+}
+```
+
+## Get started Atc.Blazor.ColorThemePreference
+
+### Installation for Atc.Blazor.ColorThemePreference
 
 ```powershell
 Install-Package Atc.Blazor.ColorThemePreference
