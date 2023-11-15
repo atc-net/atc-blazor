@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <PackageId>Atc.Blazor.ColorThemePreference</PackageId>
     <PackageTags>blazor</PackageTags>
     <Description>A library for detecting the user preferred color theme.</Description>

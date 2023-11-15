@@ -10,7 +10,7 @@ This repository contains packages with components for Blazor application:
 
 ## Requirements
 
-* [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+* [.NET 8 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ## Get started Atc.Blazor
 
