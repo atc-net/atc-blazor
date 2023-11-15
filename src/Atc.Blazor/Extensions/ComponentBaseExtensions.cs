@@ -70,7 +70,7 @@ public static class ComponentBaseExtensions
         {
             foreach (var value in stringValues)
             {
-                newUri = QueryHelpers.AddQueryString(newUri, key, value);
+                newUri = QueryHelpers.AddQueryString(newUri, key, value!);
             }
         }
 
@@ -78,7 +78,7 @@ public static class ComponentBaseExtensions
     }
 
     [SuppressMessage("Major Code Smell", "S3011:Reflection should not be used to increase accessibility of classes, methods, or fields", Justification = "OK - By design.")]
-    private static IEnumerable<PropertyInfo> GetPublicAndNonPublicProperties<T>()
+    private static PropertyInfo[] GetPublicAndNonPublicProperties<T>()
         => typeof(T).GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
     private static string? GetQueryStringParameterName(PropertyInfo propertyInfo)
